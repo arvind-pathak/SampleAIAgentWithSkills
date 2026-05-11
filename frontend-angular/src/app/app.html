@@ -1,0 +1,82 @@
+<div class="app-container">
+
+  <!-- Header -->
+  <header class="chat-header">
+    <div class="header-icon">🤖</div>
+    <div class="header-text">
+      <h1>Employee Support AI Agent</h1>
+      <p>Powered by Semantic Kernel + Ollama Phi3 · Skills: GreetingSkill · LeaveSkill · EmployeeSkill</p>
+    </div>
+  </header>
+
+  <!-- Architecture banner -->
+  <div class="arch-banner">
+    <span>Angular UI</span>
+    <span class="arrow">→</span>
+    <span>.NET 10 API</span>
+    <span class="arrow">→</span>
+    <span>Semantic Kernel</span>
+    <span class="arrow">→</span>
+    <span>Ollama Phi3</span>
+    <span class="arrow">→</span>
+    <span>Auto-selected Skill</span>
+    <span class="arrow">→</span>
+    <span>Mock Data</span>
+  </div>
+
+  <!-- Chat messages area -->
+  <div class="chat-messages" #chatMessages>
+    @for (msg of messages(); track $index) {
+      <div class="message-row" [class.user-row]="msg.role === 'user'" [class.agent-row]="msg.role === 'agent'">
+        <div class="avatar">{{ msg.role === 'user' ? '👤' : '🤖' }}</div>
+        <div class="message-bubble" [class.user-bubble]="msg.role === 'user'" [class.agent-bubble]="msg.role === 'agent'">
+          <div class="message-label">{{ msg.role === 'user' ? 'You' : 'AI Agent' }}</div>
+          <pre class="message-content">{{ msg.content }}</pre>
+        </div>
+      </div>
+    }
+
+    <!-- Loading indicator -->
+    @if (isLoading()) {
+      <div class="message-row agent-row">
+        <div class="avatar">🤖</div>
+        <div class="message-bubble agent-bubble">
+          <div class="message-label">AI Agent</div>
+          <div class="typing-indicator">
+            <span></span><span></span><span></span>
+            <em>Selecting skill and thinking...</em>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Input area -->
+  <div class="chat-input-area">
+    <textarea
+      class="chat-input"
+      [(ngModel)]="userInput"
+      (keydown)="onKeyDown($event)"
+      placeholder="Ask me anything... e.g. 'How many leaves does John have?'"
+      rows="1"
+      [disabled]="isLoading()">
+    </textarea>
+    <button
+      class="send-button"
+      (click)="sendMessage()"
+      [disabled]="isLoading() || !userInput.trim()">
+      {{ isLoading() ? '...' : 'Send' }}
+    </button>
+  </div>
+
+  <!-- Quick demo prompts -->
+  <div class="demo-prompts">
+    <span class="demo-label">Try:</span>
+    <button class="demo-btn" (click)="userInput = 'Hi'; sendMessage()">👋 Hi</button>
+    <button class="demo-btn" (click)="userInput = 'How many leaves does John have?'; sendMessage()">🏖️ John\'s leave</button>
+    <button class="demo-btn" (click)="userInput = 'Tell me about Sarah'; sendMessage()">👩 About Sarah</button>
+    <button class="demo-btn" (click)="userInput = 'What department is Mike in?'; sendMessage()">🏢 Mike\'s dept</button>
+    <button class="demo-btn" (click)="userInput = 'Show leave balance for Emily'; sendMessage()">📅 Emily\'s leave</button>
+  </div>
+
+</div>

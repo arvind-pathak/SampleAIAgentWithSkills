@@ -1,0 +1,28 @@
+Using launch settings from C:\WorkSpace\AgenticAILearnings\SampleAIAgentWithSkill\backend-agent\Properties\launchSettings.json...
+Building...
+[SkillLoader] Loaded 'employee' — 6 trigger(s), max_tokens=800
+              description:  "questions about employee department, team, role, or profile"
+              instructions: 216 chars
+[SkillLoader] Loaded 'greeting' — 9 trigger(s), max_tokens=120
+              description:  "greetings and help requests"
+              instructions: 286 chars
+[SkillLoader] Loaded 'leave' — 7 trigger(s), max_tokens=800
+              description:  "questions about employee leave balance, vacation days, annual leave, or time off"
+              instructions: 199 chars
+
+[Agent] ── RouterSystemPrompt (built from SKILL.md files) ─────────
+Classify the user message. Reply with ONLY a single digit, no other text.
+1 = questions about employee department, team, role, or profile. Examples: Tell me about Sarah, Which department does John work in?, What team is Mike on?, Give me info about Emily, Who is Sarah?, Where does John work?
+2 = greetings and help requests. Examples: Hi, Hello, Hey, Good morning, What can you do?, Can you help me?
+3 = questions about employee leave balance, vacation days, annual leave, or time off. Examples: How many leaves does John have?, Show leave balance for Sarah, What is Mike's remaining leave?, Does Emily have any leave left?, How much annual leave does John have?, I need time off
+[Agent] Skill map: 1=employee, 2=greeting, 3=leave
+[Agent] ─────────────────────────────────────────────────────────────
+
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5222
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\WorkSpace\AgenticAILearnings\SampleAIAgentWithSkill\backend-agent

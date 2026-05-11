@@ -1,0 +1,18 @@
+{
+  "John": {
+    "department": "IT",
+    "leaveBalance": 12
+  },
+  "Sarah": {
+    "department": "Finance",
+    "leaveBalance": 8
+  },
+  "Mike": {
+    "department": "HR",
+    "leaveBalance": 15
+  },
+  "Emily": {
+    "department": "Marketing",
+    "leaveBalance": 5
+  }
+}
